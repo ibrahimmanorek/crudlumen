@@ -20,7 +20,6 @@ class ExampleRepositories
 
     public function getData()
     {
-        // $results = app('db')->select("SELECT * FROM user");
         $results = DB::select("select id, name, email, phone_number from user ");
         return $results;
     }
@@ -32,8 +31,6 @@ class ExampleRepositories
         $phone = $request->input('phone');
         $id = $request->input('id');
 
-        // $results = DB::update('update tb_warga set nama = ?, blok = ?, nomor = ?, handphone = ?
-        //      where id = ?', [$nama, $blok, $nomor, $hp, $id]);
         $results = DB::table('user')->where('id', $id)->update(
             ['name' => $nama, 'email' => $email, 'phone_number' => $phone ]
         );
